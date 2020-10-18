@@ -30,7 +30,10 @@ export default {
       this.$bvModal.show('modal-add-usneseni')
     },
     remove: function (item) {
-      this.$data.curr = item
+      axios.delete(`${API}/jednani/usneseni/${item.id}`).then(res => {
+        const idx = _.indexOf(this.$props.usneseni, item)
+        this.$props.usneseni.splice(idx, 1)
+      })
     },
     onItemSubmit: function (item) {
       if (this.curr) {

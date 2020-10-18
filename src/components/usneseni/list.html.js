@@ -12,10 +12,10 @@ export default `
     <ol>
       <li v-for="u in usneseni">
         {{ u.akce }}: {{ u.text }}
-        <b-button v-if="$store.getters.isMember('taskadmin')" variant="primary" @click="edit">
+        <b-button v-if="$store.getters.isMember('taskadmin')" variant="secondary" @click="edit(u)">
           <i class="fas fa-plus"></i> Upravit
         </b-button>
-        <b-button v-if="$store.getters.isMember('taskadmin')" variant="primary" @click="remove">
+        <b-button v-if="$store.getters.isMember('taskadmin')" variant="danger" @click="remove(u)">
           <i class="fas fa-minus"></i> Odstranit
         </b-button>
       </li>
