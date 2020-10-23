@@ -68,10 +68,12 @@ export default `
     Save
   </b-button>
 
-  <div v-if="!$data.id">Prilohy a Usneseni zas po ulozeni</div>
+  <div v-if="!$data.id">Prilohy a Usneseni az po ulozeni</div>
   <div v-else>
     <list-usneseni :usneseni="usneseni" :bod="bod">
     </list-usneseni>
+    <list-prilohy :prilohy="prilohy" :bod="bod">
+    </list-prilohy>
   </div>
 </form>
 `

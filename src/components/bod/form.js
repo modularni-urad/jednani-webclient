@@ -2,6 +2,7 @@
 // import { PRIORITY_LABELS, STATE_LABELS } from '../consts.js'
 import UserSelect from '../userselect.js'
 import ListUsneseni from '../usneseni/list.js'
+import ListPrilohy from '../priloha/list.js'
 import template from './form.html.js'
 const validationMixin = window.vuelidate.validationMixin
 const validators = window.validators
@@ -52,7 +53,8 @@ export default Vue.extend({
   },
   components: {
     'user-select': UserSelect,
-    'list-usneseni': ListUsneseni
+    'list-usneseni': ListUsneseni,
+    'list-prilohy': ListPrilohy
   },
   template
 })
