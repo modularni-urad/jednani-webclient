@@ -8,15 +8,21 @@ Vue.filter('username', function (uid) {
   return loadedUsers[uid] || 'unknown'
 })
 
-export default new Vuex.Store({
+export default (router, cfg) => (new Vuex.Store({
   state: {
-    user: savedUser && JSON.parse(savedUser)
+    user: savedUser && JSON.parse(savedUser),
+    router: router,
+    cfg
   },
   getters: {
     userLogged: state => {
       return state.user !== null
     },
-    UID: state => (state.user.id),
+    UID: state => {
+      const UID = state.router.currentRoute.query.uid || state.user.id
+      axios.post('http://localhost:24000/set', { id: UID })
+      return UID
+    },
     isMember: state => group => {
       try {
         return state.user.groups.indexOf(group) >= 0
@@ -33,7 +39,13 @@ export default new Vuex.Store({
   },
   actions: {
     toast: function (ctx, opts) {
-      Vue.$toast.open(opts)
+      // Vue.$toast.open(opts)
+    },
+    send: function (ctx, opts) {
+      Object.assign(opts, {  // for debug only
+        headers: { 'Authorization': `Bearer bjbjbj`}
+      })
+      return axios(opts)
     },
     loadusers: function (ctx, opts) {
       const toBeLoaded = _.filter(opts, i => !(i in loadedUsers))
@@ -48,4 +60,4 @@ export default new Vuex.Store({
       })
     }
   }
-})
+}))

@@ -5,7 +5,8 @@
   "version": "0.0.1",
   "main": "index.js",
   "scripts": {
-    "start": "browser-sync start --port 8080 --server 'src' --files 'src' --single"
+    "start": "NODE_ENV=debug node -r esm --inspect dev/server.js",
+    "startbrk": "NODE_ENV=debug node -r esm --inspect-brk dev/server.js"
   },
   "keywords": [
     "web",
@@ -16,6 +17,15 @@
   },
   "license": "BSD",
   "devDependencies": {
-    "browser-sync": "^2.24.1"
+    "bootstrap-vue-dynamic-form": "github:vencax/bootstrap-vue-dynamic-form",
+    "browser-sync": "^2.26.14",
+    "esm": "^3.2.25",
+    "express": "^4.17.1",
+    "knex": "^0.21.16",
+    "knex-hooks": "0.0.9",
+    "modularni-urad-admin-components": "github:modularni-urad/admin-components",
+    "jednani-api": "github:modularni-urad/jednani-api#v2",
+    "entity-api-base": "github:modularni-urad/entity-api-base",
+    "sqlite3": "^4.2.0"
   }
 }
