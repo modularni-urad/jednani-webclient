@@ -8,7 +8,8 @@ Vue.filter('username', function (uid) {
   return loadedUsers[uid] || 'unknown'
 })
 
-axios.post('http://localhost:24000/set', { id: 42, groups: [ 'admin_jednani' ]})
+const groups = [ 'admin_jednani', 'admin_body' ]
+axios.post('http://localhost:24000/set', { id: 42, groups })
 
 export default (router, cfg) => (new Vuex.Store({
   state: {
@@ -22,9 +23,7 @@ export default (router, cfg) => (new Vuex.Store({
     },
     UID: state => {
       const UID = state.router.currentRoute.query.uid || state.user.id
-      axios.post('http://localhost:24000/set', { id: UID, groups: [
-        'admin_jednani'
-      ] })
+      axios.post('http://localhost:24000/set', { id: UID, groups })
       return UID
     },
     isMember: state => group => {

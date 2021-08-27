@@ -1,6 +1,6 @@
 export const ROUTE_NAMES = {
   jednanilist: 'jednanilist',
-  jednanidetail: 'jednanidetail',
+  bodydetail: 'bodydetail',
   bodylist: 'bodylist'
 }
 

@@ -27,5 +27,8 @@
     "jednani-api": "github:modularni-urad/jednani-api#v2",
     "entity-api-base": "github:modularni-urad/entity-api-base",
     "sqlite3": "^4.2.0"
+  },
+  "dependencies": {
+    "knex-paginate": "^2.2.1"
   }
 }
