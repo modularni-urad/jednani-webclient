@@ -9,7 +9,9 @@ Vue.filter('username', function (uid) {
 })
 
 const groups = [ 'admin_jednani', 'admin_body' ]
-axios.post('http://localhost:24000/set', { id: 42, groups })
+axios.post('http://localhost:24000/set', { id: 42, groups }).then(res => {
+  console.log('user set:', { id: 42, groups })
+})
 
 export default (router, cfg) => (new Vuex.Store({
   state: {
