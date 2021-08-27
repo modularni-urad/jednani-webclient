@@ -67,7 +67,7 @@ export default {
           <th scope="col">typ</th>
           <th scope="col">velikost</th>
           <th scope="col">
-            <b-button size="sm" variant="secondary" @click="add">
+            <b-button size="sm" variant="success" @click="add">
               <i class="fas fa-plus"></i> přidat
             </b-button>
           </th>
@@ -79,11 +79,11 @@ export default {
           <td>{{ i.type }}</td>
           <td>{{ i.size }}</td>
           <td>
-            <b-button size="sm" variant="secondary" @click="doEdit(i)">
+            <b-button size="sm" variant="warning" @click="doEdit(i)">
               <i class="fas fa-edit"></i> upravit
             </b-button>
-            <b-button size="sm" variant="secondary" @click="doDelete(i)">
-              <i class="fas trash-alt"></i> odstranit
+            <b-button size="sm" variant="danger" @click="doDelete(i)">
+              <i class="fas fa-trash-alt"></i> odstranit
             </b-button>
           <td>
         </tr>
