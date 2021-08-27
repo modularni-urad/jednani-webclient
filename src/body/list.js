@@ -1,4 +1,5 @@
 import ListView from '/modularni-urad-admin-components/entity/list.js'
+import DetailModal from './detail.js'
 import { initConfig } from '/modularni-urad-admin-components/entity/utils.js'
 import { ROUTE_NAMES } from '../consts.js'
 import formconfig from './formconfig.js'
@@ -25,11 +26,12 @@ export const Component = {
     rowClass: function (row) {
       return rowClasses[row.stav] || ''
     },
-    doEdit: function (i) {
-      this.$router.push({ name: ROUTE_NAMES.bodydetail, params: { id: i.id } })
+    doEdit: function (row) {
+      const query = Object.assign({}, this.query, { _detail: row.id })
+      this.$router.replace({ query })
     }
   },
-  components: { ListView },
+  components: { ListView, DetailModal },
   template: `
   <ListView :query="query" :cfg="cfg">
     <template v-slot:default="{ items, fields }">
@@ -49,6 +51,11 @@ export const Component = {
         </td>
       </tr>
     </template>
+
+    <template v-slot:detail="{ query, cfg }">
+      <DetailModal :query="query" :cfg="cfg" />
+    </template>
+
   </ListView>
   `
 }
