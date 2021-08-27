@@ -2,19 +2,18 @@
 import { ROUTE_NAMES } from '../consts.js'
 import DetailModal from '/modularni-urad-admin-components/entity/detail.js'
 import ItemForm from '/modularni-urad-admin-components/entity/form.js'
+import EditorUsneseni from '../usneseni/editor.js'
 // import formconfig from './formconfig.js'
 
 export default {
   data: () => {
     return {
       loading: true,
-      item: null,
-      prilohy: null,
-      usneseni: null
+      item: null
     }
   },
   props: ['query', 'cfg'], 
-  components: { DetailModal, ItemForm },
+  components: { DetailModal, ItemForm, EditorUsneseni },
   template: `
     <DetailModal :query="query" :cfg="cfg">      
       <template v-slot:form="{ config, onSubmit, item }">
@@ -27,7 +26,8 @@ export default {
 
         <div class="col-sm-12 col-md-6">
           Prilohy
-          Usneseni
+          <h3>usnesení</h3>
+          <EditorUsneseni :query="query" :cfg="cfg" />
         </div>
       </div>
 

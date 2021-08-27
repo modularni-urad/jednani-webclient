@@ -7,6 +7,7 @@ import formconfig from './formconfig.js'
 export async function InitCfg (cfg) {
   const mycfg = {
     url: `${cfg.url}/body`,
+    api: cfg.url,
     conf: formconfig
   }
   await initConfig(mycfg)
