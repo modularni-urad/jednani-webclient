@@ -3,6 +3,7 @@ import { ROUTE_NAMES } from '../consts.js'
 import DetailModal from '/modularni-urad-admin-components/entity/detail.js'
 import ItemForm from '/modularni-urad-admin-components/entity/form.js'
 import EditorUsneseni from '../usneseni/editor.js'
+import EditorPriloh from '../prilohy/editor.js'
 // import formconfig from './formconfig.js'
 
 export default {
@@ -13,7 +14,7 @@ export default {
     }
   },
   props: ['query', 'cfg'], 
-  components: { DetailModal, ItemForm, EditorUsneseni },
+  components: { DetailModal, ItemForm, EditorUsneseni, EditorPriloh },
   template: `
     <DetailModal :query="query" :cfg="cfg">      
       <template v-slot:form="{ config, onSubmit, item }">
@@ -25,7 +26,9 @@ export default {
         </div>
 
         <div class="col-sm-12 col-md-6">
-          Prilohy
+          <h3>přílohy</h3>
+          <EditorPriloh :query="query" :cfg="cfg" />
+
           <h3>usnesení</h3>
           <EditorUsneseni :query="query" :cfg="cfg" />
         </div>
