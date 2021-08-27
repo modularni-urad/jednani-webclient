@@ -86,6 +86,7 @@ export default {
               <i class="fas fa-trash-alt"></i>
             </b-button>
           </td>
+        </tr>
       </tbody>
     </table>
 

@@ -80,12 +80,12 @@ export default {
           <td>{{ i.size }}</td>
           <td>
             <b-button size="sm" variant="warning" @click="doEdit(i)">
-              <i class="fas fa-edit"></i> upravit
+              <i class="fas fa-edit"></i>
             </b-button>
             <b-button size="sm" variant="danger" @click="doDelete(i)">
-              <i class="fas fa-trash-alt"></i> odstranit
+              <i class="fas fa-trash-alt"></i>
             </b-button>
-          <td>
+          </td>
         </tr>
       </tbody>
     </table>

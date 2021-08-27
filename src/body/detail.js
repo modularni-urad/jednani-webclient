@@ -25,12 +25,15 @@ export default {
           </ItemForm>
         </div>
 
-        <div class="col-sm-12 col-md-6">
+        <div class="col-sm-12 col-md-6" v-if="item">
           <h3>přílohy</h3>
           <EditorPriloh :query="query" :cfg="cfg" />
 
           <h3>usnesení</h3>
           <EditorUsneseni :query="query" :cfg="cfg" />
+        </div>
+        <div class="col-sm-12 col-md-6" v-else>
+          Přílohy a usnesení lze vkládat až do uloženého bodu.
         </div>
       </div>
 
