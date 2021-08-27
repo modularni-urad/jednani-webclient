@@ -7,6 +7,7 @@ const INDEX_DIR = path.resolve(__dirname + '/..')
 const NODE_MODULES = path.resolve(path.join(__dirname, '../node_modules'))
 
 function prepareApiServer () {
+  process.env.SLOZKA_PRILOH = path.resolve(path.join(__dirname, '../.prilohy'))
   const g = require('jednani-api/test/env/init')
   process.env.DATABASE_URL = 'db.sqlite'
   const InitModule = require('jednani-api/index')
