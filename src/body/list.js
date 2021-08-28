@@ -1,6 +1,7 @@
 import ListView from '/modularni-urad-admin-components/entity/list.js'
 import DetailModal from './detail.js'
 import Actions from './actions.js'
+import { NameSpan } from '../_shared/user.js'
 import { initConfig } from '/modularni-urad-admin-components/entity/utils.js'
 import { ROUTE_NAMES } from '../consts.js'
 import formconfig from './formconfig.js'
@@ -30,7 +31,7 @@ export const Component = {
       return rowClasses[row.stav] || ''
     }
   },
-  components: { ListView, DetailModal, Actions },
+  components: { ListView, DetailModal, Actions, NameSpan },
   template: `
   <ListView :query="query" :cfg="cfg">
     <template v-slot:default="{ items, fields }">
@@ -38,7 +39,7 @@ export const Component = {
         <td>{{ row.id }}</td>
         <td>{{ row.idjendnani }}</td>
         <td>{{ row.nazev }}</td>
-        <td>{{ row.predkl }}</td>
+        <td><NameSpan :uid="row.predkl" :cfg="cfg" /></td>
         <td>{{ row.zprac }}</td>
         <Actions key="actions" :query="query" :row="row" :cfg="cfg" />
       </tr>
