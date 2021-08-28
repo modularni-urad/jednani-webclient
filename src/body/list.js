@@ -1,5 +1,6 @@
 import ListView from '/modularni-urad-admin-components/entity/list.js'
 import DetailModal from './detail.js'
+import Actions from './actions.js'
 import { initConfig } from '/modularni-urad-admin-components/entity/utils.js'
 import { ROUTE_NAMES } from '../consts.js'
 import formconfig from './formconfig.js'
@@ -15,10 +16,11 @@ export async function InitCfg (cfg) {
 }
 
 const rowClasses = {
-  'low': null,
-  'nor': 'table-success',
+  'zarazen': null,
+  'prijat': 'table-success',
   'draft': 'table-warning',
-  'cri': 'table-danger'
+  'neprijat': 'table-danger',
+  'stazen': 'table-danger'
 }
 
 export const Component = {
@@ -26,13 +28,9 @@ export const Component = {
   methods: {
     rowClass: function (row) {
       return rowClasses[row.stav] || ''
-    },
-    doEdit: function (row) {
-      const query = Object.assign({}, this.query, { _detail: row.id })
-      this.$router.replace({ query })
     }
   },
-  components: { ListView, DetailModal },
+  components: { ListView, DetailModal, Actions },
   template: `
   <ListView :query="query" :cfg="cfg">
     <template v-slot:default="{ items, fields }">
@@ -42,14 +40,7 @@ export const Component = {
         <td>{{ row.nazev }}</td>
         <td>{{ row.predkl }}</td>
         <td>{{ row.zprac }}</td>
-        <td key="actions">
-          <b-button size="sm" variant="primary" @click="doEdit(row)">
-            <i class="fas fa-edit"></i> upravit
-          </b-button>
-          <b-button size="sm" variant="secondary" @click="showDetail(row)">
-            <i class="fas fa-edit"></i> detail
-          </b-button>
-        </td>
+        <Actions key="actions" :query="query" :row="row" :cfg="cfg" />
       </tr>
     </template>
 
