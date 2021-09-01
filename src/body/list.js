@@ -37,7 +37,7 @@ export const Component = {
     <template v-slot:default="{ items, fields }">
       <tr v-for="row,rowidx in items" :key="rowidx" :class="rowClass(row)">
         <td>{{ row.id }}</td>
-        <td>{{ row.idjendnani }}</td>
+        <td>{{ row.idjednani }}</td>
         <td>{{ row.nazev }}</td>
         <td><NameSpan :uid="row.predkl" :cfg="cfg" /></td>
         <td>{{ row.zprac }}</td>
