@@ -1,7 +1,7 @@
 export const ROUTE_NAMES = {
   jednanilist: 'jednanilist',
-  bodydetail: 'bodydetail',
-  bodylist: 'bodylist'
+  bodylist: 'bodylist',
+  schuzedetail: 'schuzedetail'
 }
 
 // export const PRIORITY_LABELS = {

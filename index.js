@@ -1,7 +1,7 @@
 import { ROUTE_NAMES as NAMES } from './src/consts.js'
 import { Component as JednaniList, InitCfg as JednaniListCfg } from './src/jednani/list.js'
 import { Component as BodyList, InitCfg as BodyListCfg } from './src/body/list.js'
-// import { Component as BodyDetail, InitCfg as BodyDetailCfg } from './src/body/detail.js'
+import SchuzeDetail from './src/schuze/index.js'
 
 export default async function setupJednaniRoutes (path, cfg) {
   const cfgs = {
@@ -23,14 +23,13 @@ export default async function setupJednaniRoutes (path, cfg) {
     props: route => {
       return { query: route.query, cfg: cfgs[NAMES.bodylist] }
     }
+  }, { 
+    path: `${path}schuze/:id`,
+    name: NAMES.schuzedetail, 
+    component: SchuzeDetail,
+    props: route => {
+      return { params: route.params, query: route.query, cfg: cfgs[NAMES.bodylist] }
+    }
   }
-  // , { 
-  //   path: `${path}body/:id`,
-  //   name: NAMES.bodydetail, 
-  //   component: BodyDetail,
-  //   props: route => {
-  //     return { params: route.params, cfg: cfgs[NAMES.bodydetail] }
-  //   }
-  // }
 ]
 }
