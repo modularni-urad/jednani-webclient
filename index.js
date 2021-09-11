@@ -3,6 +3,14 @@ import { Component as JednaniList, InitCfg as JednaniListCfg } from './src/jedna
 import { Component as BodyList, InitCfg as BodyListCfg } from './src/body/list.js'
 // import { Component as BodyDetail, InitCfg as BodyDetailCfg } from './src/body/detail.js'
 
+export function createMenu (user) {
+  const children = [
+    { label: 'jednání', to: { name: NAMES.jednanilist } },
+    { label: 'body', to: { name: NAMES.bodylist } }
+  ]
+  return { label: 'jednání orgánů', children }
+}
+
 export default async function setupJednaniRoutes (path, cfg) {
   const cfgs = {
     [NAMES.jednanilist]: await JednaniListCfg(cfg),

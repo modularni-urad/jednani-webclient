@@ -1,12 +1,12 @@
 export default [
-  {
-    name: 'idjendnani',
-    // component: 'dyn-select',
-    options: '/api/jednani/',
-    attrmap: { value: 'id', text: 'datum' },
-    label: 'jednání',
-    fieldcomponent: true
-  },
+  // {
+  //   name: 'idjendnani',
+  //   // component: 'dyn-select',
+  //   options: '/api/jednani/',
+  //   attrmap: { value: 'id', text: 'datum' },
+  //   label: 'jednání',
+  //   fieldcomponent: true
+  // },
   {
     name: 'nazev',
     component: 'dyn-input',
