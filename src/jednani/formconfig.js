@@ -20,6 +20,7 @@ export default [
   {
     name: "datum",
     component: "dyn-datetime",
+    type: 'datetime',
     label: "Datum",
     fieldcomponent: 'datestring'
   }

@@ -1,5 +1,4 @@
 /* global axios, API, _ */
-import { NameSpan } from '../_shared/user.js'
 import MarkDown from '../_shared/markdown.js'
 import Hlasovani from './hlasovani.js'
 import { ROUTE_NAMES } from '../consts.js'
@@ -29,7 +28,7 @@ export default {
     this.$data.loading = false
   },
   props: ['query', 'cfg', 'bod'], 
-  components: { NameSpan, MarkDown, Hlasovani },
+  components: { MarkDown, Hlasovani },
   template: `
     <div class="row">
       <div class="col-sm-12 col-md-6">  

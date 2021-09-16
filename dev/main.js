@@ -1,15 +1,26 @@
 /* global Vue, VueMarkdown */
 import './vuecustoms.js'
 import Store from './store.js'
-import setupRoutes from './index.js'
+import {setupRoutes} from './index.js'
 import DynComponents from './bootstrap-vue-dynamic-form/index.js'
+import ListView from '/modularni-urad-admin-components/entity/list.js'
+import ItemForm from '/modularni-urad-admin-components/entity/form.js'
+import DetailModal from '/modularni-urad-admin-components/entity/detail.js'
+import { initConfig } from '/modularni-urad-admin-components/entity/utils.js'
+import {NameSpan} from '../src/_shared/user.js'
 import { 
   WITHOUT_DIACRITICS_VALIDATOR_NAME, WITHOUT_DIACRITICS_VALIDATOR 
 } from './bootstrap-vue-dynamic-form/components/file.js'
 
+Vue.component('ACListView', ListView)
+Vue.component('ACDynamicForm', ItemForm)
+Vue.component('ACDetailModal', DetailModal)
+Vue.component('NameSpan', NameSpan)
+
 for (let i in DynComponents) {
   Vue.component(i, DynComponents[i])
 }
+Vue.component('user-select', DynComponents['dyn-input'])
 Vue.use(VueMarkdown)
 Vue.component('ValidationProvider', VeeValidate.ValidationProvider)
 Vue.component('ValidationObserver', VeeValidate.ValidationObserver)
@@ -23,7 +34,7 @@ async function doInit () {
   }
 
   const router = new VueRouter({
-    routes: await setupRoutes('/', cfg)
+    routes: await setupRoutes('/', cfg, initConfig)
   })
   const store = Store(router)
 

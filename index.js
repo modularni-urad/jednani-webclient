@@ -11,11 +11,10 @@ export function createMenu (user) {
   return { label: 'jednání orgánů', children }
 }
 
-export default async function setupJednaniRoutes (path, cfg) {
+export async function setupRoutes (path, cfg, initConfig) {
   const cfgs = {
-    [NAMES.jednanilist]: await JednaniListCfg(cfg),
-    [NAMES.bodylist]: await BodyListCfg(cfg),
-    // [NAMES.bodydetail]: await BodyDetailCfg(cfg),
+    [NAMES.jednanilist]: await JednaniListCfg(cfg, initConfig),
+    [NAMES.bodylist]: await BodyListCfg(cfg, initConfig)
   }
   return [{ 
     path: `${path}jednani/`, 

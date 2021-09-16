@@ -1,7 +1,4 @@
-/* global axios, API, _ */
 import { ROUTE_NAMES } from '../consts.js'
-import DetailModal from '/modularni-urad-admin-components/entity/detail.js'
-import ItemForm from '/modularni-urad-admin-components/entity/form.js'
 import EditorUsneseni from '../usneseni/editor.js'
 import EditorPriloh from '../prilohy/editor.js'
 // import formconfig from './formconfig.js'
@@ -14,15 +11,14 @@ export default {
     }
   },
   props: ['query', 'cfg'], 
-  components: { DetailModal, ItemForm, EditorUsneseni, EditorPriloh },
+  components: { EditorUsneseni, EditorPriloh },
   template: `
-    <DetailModal :query="query" :cfg="cfg">      
+    <ACDetailModal :query="query" :cfg="cfg">      
       <template v-slot:form="{ config, onSubmit, item }">
 
       <div class="row">
         <div class="col-sm-12 col-md-6">  
-          <ItemForm :config="config" :onSubmit="onSubmit" :item="item">
-          </ItemForm>
+          <ACDynamicForm :config="config" :onSubmit="onSubmit" :item="item" />
         </div>
 
         <div class="col-sm-12 col-md-6" v-if="item">
@@ -38,6 +34,6 @@ export default {
       </div>
 
       </template>
-    </DetailModal>
+    </ACDetailModal>
   `
 }

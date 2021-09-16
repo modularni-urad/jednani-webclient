@@ -1,12 +1,9 @@
-import ListView from '/modularni-urad-admin-components/entity/list.js'
 import DetailModal from './detail.js'
 import Actions from './actions.js'
-import { NameSpan } from '../_shared/user.js'
-import { initConfig } from '/modularni-urad-admin-components/entity/utils.js'
 import { ROUTE_NAMES } from '../consts.js'
 import formconfig from './formconfig.js'
 
-export async function InitCfg (cfg) {
+export async function InitCfg (cfg, initConfig) {
   const mycfg = {
     url: `${cfg.url}/body`,
     api: cfg.url,
@@ -31,16 +28,16 @@ export const Component = {
       return rowClasses[row.stav] || ''
     }
   },
-  components: { ListView, DetailModal, Actions, NameSpan },
+  components: { Actions, DetailModal },
   template: `
-  <ListView :query="query" :cfg="cfg">
+  <ACListView :query="query" :cfg="cfg">
     <template v-slot:default="{ items, fields }">
       <tr v-for="row,rowidx in items" :key="rowidx" :class="rowClass(row)">
         <td>{{ row.id }}</td>
-        <td>{{ row.idjednani }}</td>
+        
         <td>{{ row.nazev }}</td>
         <td><NameSpan :uid="row.predkl" :cfg="cfg" /></td>
-        <td>{{ row.zprac }}</td>
+        <td><NameSpan :uid="row.zprac" :cfg="cfg" /></td>
         <Actions key="actions" :query="query" :row="row" :cfg="cfg" />
       </tr>
     </template>
@@ -49,6 +46,7 @@ export const Component = {
       <DetailModal :query="query" :cfg="cfg" />
     </template>
 
-  </ListView>
+  </ACListView>
   `
 }
+// <td>{{ row.idjednani }}</td>

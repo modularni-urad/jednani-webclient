@@ -1,4 +1,3 @@
-import ItemForm from '/modularni-urad-admin-components/entity/form.js'
 import formconfig from './formconfig.js'
 
 export default {
@@ -55,7 +54,6 @@ export default {
       }
     }
   },
-  components: { ItemForm },
   template: `
   <div>
     <table class="table" v-if="!loading">
@@ -91,7 +89,7 @@ export default {
     </table>
 
     <b-modal v-model="opened" size="lg" title="Upravit Usnesení" hide-footer>
-      <ItemForm :onSubmit="onSubmit" :item="item" :config="formconfig" />
+      <ACDynamicForm :onSubmit="onSubmit" :item="item" :config="formconfig" />
     </b-modal>
   </div>
 `}

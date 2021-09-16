@@ -16,13 +16,13 @@ export default [
   },
   {
     name: 'predkl',
-    component: 'dyn-input',
+    component: 'user-select',
     label: 'předkládá',
     fieldcomponent: true
   },
   {
     name: 'zprac',
-    component: 'dyn-input',
+    component: 'user-select',
     label: 'zpracoval',
     fieldcomponent: true
   },
