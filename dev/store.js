@@ -2,11 +2,6 @@
 
 const KEY = '_opencomm_user_'
 const savedUser = localStorage.getItem(KEY)
-const loadedUsers = {}
-
-Vue.filter('username', function (uid) {
-  return loadedUsers[uid] || 'unknown'
-})
 
 const groups = [ 'admin_jednani', 'admin_body' ]
 axios.post('http://localhost:24000/set', { id: 42, groups }).then(res => {
@@ -51,18 +46,6 @@ export default (router, cfg) => (new Vuex.Store({
         headers: { 'Authorization': `Bearer bjbjbj`}
       })
       return axios(opts)
-    },
-    loadusers: function (ctx, opts) {
-      const toBeLoaded = _.filter(opts, i => !(i in loadedUsers))
-      return new Promise(resolve => {
-        toBeLoaded.length === 0 ? resolve() : setTimeout(() => {
-          console.log(`loaded: ${JSON.stringify(toBeLoaded)}`)
-          _.each(toBeLoaded, uid => {
-            loadedUsers[uid] = 'jssjfls' + uid
-          })
-          resolve()
-        }, 300)
-      })
     }
   }
 }))
