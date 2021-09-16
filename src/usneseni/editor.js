@@ -39,14 +39,16 @@ export default {
     onSubmit: async function (item) {
       try {
         const api = this.$props.cfg.api
-        const id = this.$props.query._detail
+        const id = this.item ? this.item.id : this.$props.query._detail
         const res = await this.$store.dispatch('send', {
-          method: 'post',
+          method: this.item ? 'put' : 'post',
           url: `${api}/usneseni/${id}`,
           data: item
         })
         this.$store.dispatch('toast', { message: 'uloženo' })
-        this.$data.items.push(item)
+        this.item
+          ? Object.assign(this.item, res.data)
+          : this.$data.items.push(res.data)
         this.$data.opened = false
       } catch (err) {
         const message = err.response.data
