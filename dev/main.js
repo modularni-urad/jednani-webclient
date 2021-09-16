@@ -8,6 +8,7 @@ import ItemForm from '/modularni-urad-admin-components/entity/form.js'
 import DetailModal from '/modularni-urad-admin-components/entity/detail.js'
 import { initConfig } from '/modularni-urad-admin-components/entity/utils.js'
 import {NameSpan} from '../src/_shared/user.js'
+import FullWidthMDEditor from '../src/_shared/fullwidth-md-editor.js'
 import { 
   WITHOUT_DIACRITICS_VALIDATOR_NAME, WITHOUT_DIACRITICS_VALIDATOR 
 } from './bootstrap-vue-dynamic-form/components/file.js'
@@ -21,6 +22,8 @@ for (let i in DynComponents) {
   Vue.component(i, DynComponents[i])
 }
 Vue.component('user-select', DynComponents['dyn-input'])
+Vue.component('markdown-editor', DynComponents['dyn-textarea'])
+Vue.component('fullwidth-md-editor', FullWidthMDEditor)
 Vue.use(VueMarkdown)
 Vue.component('ValidationProvider', VeeValidate.ValidationProvider)
 Vue.component('ValidationObserver', VeeValidate.ValidationObserver)

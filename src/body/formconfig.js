@@ -28,7 +28,7 @@ export default [
   },
   {
     name: 'duvod',
-    component: 'dyn-textarea',
+    component: 'fullwidth-md-editor',
     label: 'důvodová zpráva',
     rules: 'required'
   }
